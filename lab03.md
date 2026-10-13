@@ -256,3 +256,55 @@ void functieDoi() {
 ```
 
 </details>
+
+<details>
+
+<summary>Oscilloscope</summary>
+
+## Oscilloscope
+
+Sketch for measurements
+
+```cpp
+const uint8_t BUTTON_PIN = 21; // INT0 on the Mega
+const uint8_t MARKER_PIN = 8;  // free even with the LCD shield fitted
+
+void setup() {
+  pinMode(BUTTON_PIN, INPUT_PULLUP);
+  pinMode(MARKER_PIN, OUTPUT);
+  attachInterrupt(digitalPinToInterrupt(BUTTON_PIN), onPress, FALLING);
+}
+
+void loop() { }
+
+void onPress() {
+  digitalWrite(MARKER_PIN, !digitalRead(MARKER_PIN)); // toggle on every interrupt
+}
+```
+
+### Exercise 1: Contact bounce
+
+1. Connect CH1 to pin 21 through a jumper wire, with the ground clip on GND and the probe on 10X.
+1. Set CH1 to 2 V/div and the time base to 1 ms/div.
+1. Set the trigger to Edge, source CH1, slope **Falling**, level about 2.5 V.
+1. Turn the horizontal position knob to move the trigger point two or three divisions from the left edge.
+1. Press **Single**. The scope waits, showing `Ready`.
+1. Press the button. The scope captures the press and stops.
+1. Turn the time base knob to zoom into the captured edge, down to 100 µs/div or less.
+
+You should see the line fall, jump back up one or more times, and then stay low. To measure it, press **Cursors**, put X1 on the first falling edge and X2 on the last transition, and read ΔX. Typical values run from tens of microseconds to a few milliseconds.
+
+Repeat it several times, since every press is different, and some presses will be clean. Changing the slope to **Rising** captures the release, which usually bounces too.
+
+### Exercise 2: Delay between the press and the ISR
+
+1. Keep CH1 on pin 21 and connect CH2 to pin 8. One ground clip is enough.
+1. Set both channels to 2 V/div and move the traces apart vertically.
+1. Keep the trigger on CH1, falling, and set the time base to **5 µs/div**.
+1. Press **Single**, then press the button.
+
+CH1 falls at the trigger point, and CH2 changes level a little later. That gap is the response time. Measure it with the X cursors, from where CH1 crosses 2.5 V to the edge on CH2.
+
+It is expected to be somewhere around 5 to 15 µs. It is made of the time to finish the current instruction, saving the registers, the Arduino interrupt dispatch, and the `digitalRead()` and `digitalWrite()` calls. Treat that range as an estimate.
+
+</details>

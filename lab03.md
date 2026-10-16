@@ -285,7 +285,7 @@ void onPress() {
 
 ### Exercise 1: Contact bounce
 
-1. Connect CH1 to pin 21 through a jumper wire, with the ground clip on GND and the probe on 10X.
+1. Connect CH1 to pin 8 through a jumper wire, with the ground clip on GND and the probe on 10X.
 1. Set CH1 to 2 V/div and the time base to 1 ms/div.
 1. Set the trigger to Edge, source CH1, slope **Falling**, level about 2.5 V.
 1. Turn the horizontal position knob to move the trigger point two or three divisions from the left edge.

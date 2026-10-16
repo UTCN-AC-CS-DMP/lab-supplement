@@ -171,7 +171,7 @@ void loop() {
   }
   delay(1000);
   lcd.setCursor(0, 0);    // Set the LCD cursor
-  lcd.print("Liniste…");  // Display a message
+  lcd.print("Liniste...");  // Display a message
 }
 
 // ISR for INT0

@@ -238,6 +238,7 @@ void loop() {
   // Insert task here for the normal program flow ...
   lcd.print("Programul principal");
   delay(1000);
+  lcd.clear();
 }
 
 // First ISR function

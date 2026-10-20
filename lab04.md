@@ -173,7 +173,7 @@ void loop() {}  // no need to repeat the melody
 
 <summary>Ex 5</summary>
 
-## Ex 4 - PWM
+## Ex 5 - PWM
 
 ```cpp
 int buzzerPin = 8;  // pin for attaching the piezoelectric speaker

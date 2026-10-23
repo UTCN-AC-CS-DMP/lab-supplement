@@ -13,7 +13,12 @@
 #include <avr/interrupt.h>
 #include <LiquidCrystal.h>
 
+// LCD WITH BUTTONS
+// LiquidCrystal lcd(8, 9, 4, 5, 6, 7);
+
+// LCD WITHOUT BUTTONS
 LiquidCrystal lcd(7, 6, 5, 4, 3, 2);
+
 volatile int myVar;
 
 void setup() {
@@ -61,7 +66,12 @@ ISR(TIMER1_OVF_vect) {
 #include <avr/interrupt.h>
 #include <LiquidCrystal.h>
 
+// LCD WITH BUTTONS
+// LiquidCrystal lcd(8, 9, 4, 5, 6, 7);
+
+// LCD WITHOUT BUTTONS
 LiquidCrystal lcd(7, 6, 5, 4, 3, 2);
+
 volatile int myVar;
 
 void setup() {
@@ -107,7 +117,12 @@ ISR(TIMER1_COMPA_vect) {
 #include <TimerOne.h>
 #include <LiquidCrystal.h>
 
+// LCD WITH BUTTONS
+// LiquidCrystal lcd(8, 9, 4, 5, 6, 7);
+
+// LCD WITHOUT BUTTONS
 LiquidCrystal lcd(7, 6, 5, 4, 3, 2);
+
 volatile int myVar;
 
 void setup(void) {

@@ -92,7 +92,7 @@ LiquidCrystal lcd(7, 6, 5, 4, 3, 2);
 
 void setup() {
   ADCSRA |= ((1 << ADPS2) | (1 << ADPS1) | (1 << ADPS0));  // set the ADC clock to 16MHz/128 = 125kHz
-  ADMUX |= (1 << REFS0);                                   // Set the ref. voltage to Vcc (5V)
+  ADMUX  |= (1 << REFS0);                                  // Set the ref. voltage to Vcc (5V)
   ADCSRA |= (1 << ADEN);                                   // Activate the ADC
   ADCSRA |= (1 << ADSC);
 }

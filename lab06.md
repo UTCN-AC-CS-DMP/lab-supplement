@@ -107,7 +107,7 @@ void loop() {
 uint16_t read_adc(uint8_t channel) {
   ADMUX &= 0xE0;                // delete MUX0-4 bits
   ADMUX |= channel & 0x07;      // Sets in MUX0-2 the value of the
-                                //new channel to be read
+                                // new channel to be read
   ADCSRB = channel & (1 << 3);  // Set MUX5 value
   ADCSRA |= (1 << ADSC);        // start conversion
   while (ADCSRA & (1 << ADSC))

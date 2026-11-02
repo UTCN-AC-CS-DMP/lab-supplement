@@ -6,6 +6,8 @@
 
 <summary>Ex 1 - Serial</summary>
 
+## Ex 1 - Serial
+
 ```cpp
 #include <LiquidCrystal.h>  //include LCD library
 

@@ -8,6 +8,9 @@
 
 ## Ex 1 - Potentiometer
 
+![WH148 Single Potentiometer B10K 3pin 15mm](./images/lab06_1_potentiometer.webp)
+WH148 Single Potentiometer B10K 3pin 15mm
+
 ```cpp
 #include <LiquidCrystal.h>
 
@@ -20,11 +23,10 @@ LiquidCrystal lcd(7, 6, 5, 4, 3, 2);
 void setup() {
   analogReference(DEFAULT);  // set the reference voltage to the
                              // default value (optional)
-  lcd.begin(16, 2);          //init LCD
+  lcd.begin(16, 2);          // init LCD
   lcd.setCursor(0, 0);
   lcd.print("Read sensor");
-  pinMode(A1, INPUT);  // Set pin A1 as input (make sure that it
-                       // was not set as output
+  pinMode(A1, INPUT);  // Set pin A1 as input (make sure that it was not set as output)
 }
 
 void loop() {
@@ -53,7 +55,7 @@ void setup() {
 
 void loop() {
   Serial.print("Temp [C]: ");
-  float temp = readTempInCelsius(10, 0);  // read temp. 10 times and return the average
+  float temp = readTempInCelsius(10, A1); // read temp. 10 times and return the average
   Serial.println(temp);                   // display the result
   delay(200);
 }
@@ -99,7 +101,7 @@ void setup() {
 
 
 void loop() {
-  int val = read_adc(0);  //read the value
+  int val = read_adc(1);  // MUX index, don't use A0, A1, etc here, use 0 1 ... for the ADC channels
   lcd.setCursor(0, 1);
   lcd.print(val);
 }

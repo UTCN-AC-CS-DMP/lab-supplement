@@ -44,10 +44,18 @@ void loop() {
 
 ## Ex 2 - Analog temperature sensor
 
+|||
+|:-:|:-:|
+|![LM35](./images/lab06_2_lm35.webp)|![LM50](./images/lab06_2_lm50.webp)|
+|**LM35**|**LM50**|
+
 ```cpp
 float resolutionADC = .0049;   // default ADC resolution for the 5V
                                // reference = 0.049 [V] / unit
 float resolutionSensor = .01;  // sensor resolution = 0.01V / °C
+
+// float offsetSensor = 0.0; // LM35
+float offsetSensor = 0.5;    // LM50
 
 void setup() {
   Serial.begin(9600);
@@ -68,7 +76,7 @@ float readTempInCelsius(int count, int pin) {
     float voltage = reading * resolutionADC;
 
     // subtract the DC offset and converts the value in degrees (C)
-    float tempCelsius = (voltage - 0.5) / resolutionSensor;
+    float tempCelsius = (voltage - offsetSensor) / resolutionSensor;
     sumTemp = sumTemp + tempCelsius;  // accumulates the readings
   }
   return sumTemp / (float)count;  // return the average value
@@ -79,9 +87,54 @@ float readTempInCelsius(int count, int pin) {
 
 <details>
 
-<summary>Ex 3 - ADC</summary>
+<summary>Ex 3 - Joystick</summary>
 
-## Ex 3 - ADC General
+![KY-023](./images/lab06_3_KY023.webp)
+
+## Ex 3 - Joystick
+
+```cpp
+#include <LiquidCrystal.h>
+
+// LCD WITH BUTTONS
+// LiquidCrystal lcd(8, 9, 4, 5, 6, 7);
+
+// LCD WITHOUT BUTTONS
+LiquidCrystal lcd(7, 6, 5, 4, 3, 2);
+
+const int X_AXIS_PIN  = A0;
+const int Y_AXIS_PIN  = A1;
+const int JOY_BTN_PIN = 21;   // needs the internal pull-up
+
+void setup() {
+  pinMode(JOY_BTN_PIN, INPUT_PULLUP);
+  lcd.begin(16, 2);
+}
+
+void loop() {
+  int x = analogRead(X_AXIS_PIN);
+  int y = analogRead(Y_AXIS_PIN);
+  bool pressed = (digitalRead(JOY_BTN_PIN) == LOW);  // pull-up: LOW = pressed
+
+  lcd.setCursor(0, 0);
+  lcd.print("X:"); lcd.print(x); lcd.print("   ");   // spaces erase old digits
+  lcd.setCursor(8, 0);
+  lcd.print("Y:"); lcd.print(y); lcd.print("   ");
+
+  lcd.setCursor(0, 1);
+  lcd.print(pressed ? "PRESSED " : "        ");
+
+  delay(100);                               // ~10 updates per second
+}
+```
+
+</details>
+
+<details>
+
+<summary>Ex 4 - ADC</summary>
+
+## Ex 4 - ADC General
 
 ```cpp
 #include <LiquidCrystal.h>

@@ -46,7 +46,7 @@ void loop() {
 
 |||
 |:-:|:-:|
-|![LM35](./images/lab06_2_lm35.webp)|![LM50](./images/lab06_2_lm50.webp)|
+|![LM35](./images/lab06_2_LM35.webp)|![LM50](./images/lab06_2_LM50.webp)|
 |**LM35**|**LM50**|
 
 ```cpp

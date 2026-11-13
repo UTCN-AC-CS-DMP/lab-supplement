@@ -168,7 +168,7 @@ void setup() {
 
 
 void loop() {
-  int val = read_adc(1);  // MUX index, don't use A0, A1, etc here, use 0 1 ... for the parameter
+  int val = read_adc(8);  // MUX index, don't use A0, A1, etc here, use 0 1 ... for the parameter
   lcd.setCursor(0, 1);
   lcd.print("    ");
   lcd.setCursor(0, 1);

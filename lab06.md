@@ -64,14 +64,16 @@ float resolutionSensor = .01;  // sensor resolution = 0.01V / °C
 // float offsetSensor = 0.0; // LM35
 float offsetSensor = 0.5;    // LM50
 
+const int ANALOG_PIN = A8;
+
 void setup() {
   Serial.begin(9600);
 }
 
 void loop() {
   Serial.print("Temp [C]: ");
-  float temp = readTempInCelsius(10, A1); // read temp. 10 times and return the average
-  Serial.println(temp);                   // display the result
+  float temp = readTempInCelsius(10, ANALOG_PIN); // read temp. 10 times and return the average
+  Serial.println(temp);                           // display the result
   delay(200);
 }
 

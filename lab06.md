@@ -145,7 +145,7 @@ void loop() {
 
 ## Ex 4 - ADC General
 
-For the **LM35**:
+For the **Light sensor**:
 - `-      --> 5V!!!!`
 - `Middle --> GND!!!`
 - `S      --> Analog pin`

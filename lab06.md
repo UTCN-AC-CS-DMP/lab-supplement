@@ -20,17 +20,19 @@ WH148 Single Potentiometer B10K 3pin 15mm
 // LCD WITHOUT BUTTONS
 LiquidCrystal lcd(7, 6, 5, 4, 3, 2);
 
+const int ANALOG_PIN = A8;
+
 void setup() {
   analogReference(DEFAULT);  // set the reference voltage to the
                              // default value (optional)
   lcd.begin(16, 2);          // init LCD
   lcd.setCursor(0, 0);
   lcd.print("Read sensor");
-  pinMode(A1, INPUT);  // Set pin A1 as input (make sure that it was not set as output)
+  pinMode(ANALOG_PIN, INPUT);  // Set the pin as the input (make sure that it was not set as output)
 }
 
 void loop() {
-  int val = analogRead(A1);  //reading the analog value
+  int val = analogRead(ANALOG_PIN);  //reading the analog value
   lcd.setCursor(0, 1);
   lcd.print(val);
 }
@@ -154,9 +156,12 @@ void setup() {
 
 
 void loop() {
-  int val = read_adc(1);  // MUX index, don't use A0, A1, etc here, use 0 1 ... for the ADC channels
+  int val = read_adc(1);  // MUX index, don't use A0, A1, etc here, use 0 1 ... for the parameter
+  lcd.setCursor(0, 1);
+  lcd.print("    ");
   lcd.setCursor(0, 1);
   lcd.print(val);
+  delay(100);
 }
 
 uint16_t read_adc(uint8_t channel) {

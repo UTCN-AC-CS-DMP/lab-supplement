@@ -145,6 +145,11 @@ void loop() {
 
 ## Ex 4 - ADC General
 
+For the **LM35**:
+- `-      --> 5V!!!!`
+- `Middle --> GND!!!`
+- `S      --> Analog pin`
+
 ```cpp
 #include <LiquidCrystal.h>
 

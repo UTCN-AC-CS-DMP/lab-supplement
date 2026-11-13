@@ -51,6 +51,11 @@ void loop() {
 |![LM35](./images/lab06_2_LM35.webp)|![LM50](./images/lab06_2_LM50.webp)|
 |**LM35**|**LM50**|
 
+For the **LM35**:
+- `R1 -   --> GND`
+- `Middle --> 5V`
+- `S      --> Analog pin`
+
 ```cpp
 float resolutionADC = .0049;   // default ADC resolution for the 5V
                                // reference = 0.049 [V] / unit

@@ -68,6 +68,7 @@ const int ANALOG_PIN = A8;
 
 void setup() {
   Serial.begin(9600);
+  pinMode(ANALOG_PIN, INPUT);
 }
 
 void loop() {
@@ -159,7 +160,10 @@ For the **Light sensor**:
 // LCD WITHOUT BUTTONS
 LiquidCrystal lcd(7, 6, 5, 4, 3, 2);
 
+const int ANALOG_PIN = A8;
+
 void setup() {
+  pinMode(ANALOG_PIN, INPUT);
   ADCSRA |= ((1 << ADPS2) | (1 << ADPS1) | (1 << ADPS0));  // set the ADC clock to 16MHz/128 = 125kHz
   ADMUX  |= (1 << REFS0);                                  // Set the ref. voltage to Vcc (5V)
   ADCSRA |= (1 << ADEN);                                   // Activate the ADC
